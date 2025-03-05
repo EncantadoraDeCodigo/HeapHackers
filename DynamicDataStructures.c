@@ -8,7 +8,15 @@ struct Nodo
 };
 
 struct Nodo *crearNodo(int dato)
-{                                                                        // devuelve un puntero a un nodo
-    struct Nodo *nuevoNodo = (struct Nodo *)malloc(sizeof(struct Nodo)); // reserva dinamicamentr memoria
+{
+    struct Nodo *nuevoNodo = (struct Nodo *)malloc(sizeof(struct Nodo));
     nuevoNodo->dato = dato;
+    nuevoNodo->siguiente = NULL;
+    return nuevoNodo;
+};
+
+void insertarInicio(struct Nodo** cabeza, int dato){
+    struct Nodo* nuevoNodo = crearNodo(dato);
+    nuevoNodo->siguiente= *cabeza;
+    *cabeza = nuevoNodo;
 }
